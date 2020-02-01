@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="One.master.cs" Inherits="LibrarySystem.One" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="style1.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+    <script type="text/javascript">
+    function confirm_alert(node) {
+        return confirm("Are you sure you want to logout?");
+    }
+    </script>
+    </head>
+<body class="univ-body">
+    <form id="form1" runat="server">
+        <div id="header">
+            <div id="header-logo">
+                <asp:Image ID="imgBanner" runat="server" Height="90px" ImageAlign="Baseline" ImageUrl="~/Images/System/logo3.png" />
+            </div><br />
+        </div>
+        <div id="menu-bar">
+            <ul>
+                <%if (Session["username"] != null){ %>
+                <li style="color:#ff3f00;padding:0 20px 0 20px;">Welcome <% Response.Write(Session["username"]); %></li>
+                <%} %>
+                <li><asp:HyperLink ID="HyperLink1" runat="server" CssClass="nav-bar" NavigateUrl="~/default.aspx">Home</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLink6" runat="server" CssClass="nav-bar" NavigateUrl="~/allbook.aspx">Book List</asp:HyperLink></li>
+                <%if (Session["username"] != null && Session["role_id"].ToString() == "2"){ %>
+                <li><asp:HyperLink ID="HyperLink2" runat="server" CssClass="nav-bar" NavigateUrl="~/checkout.aspx">Checkout</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLink7" runat="server" CssClass="nav-bar" NavigateUrl="~/returnbook.aspx">Return</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLink4" runat="server" CssClass="nav-bar" NavigateUrl="~/logout.aspx" onclick="return confirm_alert(this);">Logout</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLink8" runat="server" CssClass="nav-bar" NavigateUrl="~/userpage.aspx">Account</asp:HyperLink></li>
+                <%}else if (Session["username"] != null && Session["role_id"].ToString() == "1"){ %>
+                <li><asp:HyperLink ID="HyperLink9" runat="server" CssClass="nav-bar" NavigateUrl="~/admindash.aspx">Admin Dashboard</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLink10" runat="server" CssClass="nav-bar" NavigateUrl="~/logout.aspx" onclick="return confirm_alert(this);">Logout</asp:HyperLink></li>
+                <%}else{ %>
+                <li><asp:HyperLink ID="HyperLink3" runat="server" CssClass="nav-bar" NavigateUrl="~/login.aspx">Login</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLink5" runat="server" CssClass="nav-bar" NavigateUrl="~/registration.aspx">Register</asp:HyperLink></li>
+                <%} %>
+            </ul>
+        </div>
+        <p>
+            &nbsp;</p>
+        <div id="body-wrapper">
+            <div id="divbody-content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+    <div id="footer">
+        Copyright @NaqibRifqi #teamBuatSorang2
+    </div>
+</body>
+</html>
