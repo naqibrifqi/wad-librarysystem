@@ -40,7 +40,7 @@ namespace LibrarySystem.admin
             string search = txtSearch.Text;
             //dtlUser.Visible = true;
             //btnDelete.Visible = true;
-            using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;MultipleActiveResultSets=true;AttachDbFilename=c:\users\user\documents\visual studio 2017\Projects\LibrarySystem\LibrarySystem\App_Data\DBO.mdf;Integrated Security=True"))
+            using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;MultipleActiveResultSets=true;AttachDbFilename=C:\Users\dorab\source\repos\LibrarySystem\LibrarySystem\App_Data\DBO.mdf;Integrated Security=True"))
             {
                 try
                 {
@@ -79,7 +79,7 @@ namespace LibrarySystem.admin
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string userid = GridView1.SelectedRow.Cells[1].Text;
-            using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;MultipleActiveResultSets=true;AttachDbFilename=c:\users\user\documents\visual studio 2017\Projects\LibrarySystem\LibrarySystem\App_Data\DBO.mdf;Integrated Security=True"))
+            using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;MultipleActiveResultSets=true;AttachDbFilename=C:\Users\dorab\source\repos\LibrarySystem\LibrarySystem\App_Data\DBO.mdf;Integrated Security=True"))
             {
                 try
                 {

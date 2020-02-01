@@ -24,7 +24,7 @@
                 <asp:BoundField DataField="Checkout ID" HeaderText="Checkout ID" InsertVisible="False" ReadOnly="True" SortExpression="Checkout ID" />
                 <asp:BoundField DataField="Book Title" HeaderText="Book Title" SortExpression="Book Title" />
                 <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username" />
-                <asp:BoundField DataField="Date Checkout" HeaderText="Date Checkout" dataformatstring="{0:MMMM d, yyyy}" SortExpression="Date Checkout" />
+                <asp:BoundField DataField="Date Checkout" HeaderText="Date Checkout" dataformatstring="{0:MMMM-dd-yyyy}" SortExpression="Date Checkout" />
                 <asp:BoundField DataField="Deadline" HeaderText="Deadline" dataformatstring="{0:MMMM d, yyyy}" SortExpression="Deadline" />
                 <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
             </Columns>

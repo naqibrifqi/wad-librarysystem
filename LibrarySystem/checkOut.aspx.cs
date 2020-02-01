@@ -17,7 +17,7 @@ namespace LibrarySystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Debug.WriteLine(DateTime.Now);
             //Check whether the user is logged in or not
             if (Session["username"] != null)
             {
@@ -44,7 +44,7 @@ namespace LibrarySystem
             {
                 if (Page.IsValid)
                 {
-                    using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;MultipleActiveResultSets=true;AttachDbFilename=c:\users\user\documents\visual studio 2017\Projects\LibrarySystem\LibrarySystem\App_Data\DBO.mdf;Integrated Security=True"))
+                    using (SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;MultipleActiveResultSets=true;AttachDbFilename=C:\Users\dorab\source\repos\LibrarySystem\LibrarySystem\App_Data\DBO.mdf;Integrated Security=True"))
                     {
                         try
                         {
@@ -90,7 +90,9 @@ namespace LibrarySystem
                                                 string userid = user_id;
                                                 SqlCommand cmnd = con.CreateCommand();
                                                 cmnd.CommandType = System.Data.CommandType.Text;
-                                                cmnd.CommandText = "INSERT INTO tblCheckout VALUES('" + bookid + "','" + userid + "','" + DateTime.Now + "','" + DateTime.Now.AddDays(7) + "','CHECKED OUT',0.00)";
+                                                DateTime today = DateTime.Now;
+                                                DateTime endDate = today.AddMonths(7);
+                                                cmnd.CommandText = "INSERT INTO tblCheckout VALUES('" + bookid + "','" + userid + "','" + today + "','" + endDate + "','CHECKED OUT',0.00)";
                                                 cmnd.ExecuteNonQuery();
 
                                             }catch(SqlException exp)
@@ -171,7 +173,7 @@ namespace LibrarySystem
         {
             //string bookid = GridView1.SelectedRow.Cells[].Text;
             string bookgrid = GridView1.SelectedRow.Cells[1].Text;
-            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;MultipleActiveResultSets=true;AttachDbFilename=c:\users\user\documents\visual studio 2017\Projects\LibrarySystem\LibrarySystem\App_Data\DBO.mdf;Integrated Security=True"))
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;MultipleActiveResultSets=true;AttachDbFilename=C:\Users\dorab\source\repos\LibrarySystem\LibrarySystem\App_Data\DBO.mdf;Integrated Security=True"))
             {
                 try
                 {
